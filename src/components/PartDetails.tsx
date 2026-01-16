@@ -1,10 +1,11 @@
-import type { Part } from "../types";
+import type { Part, PartStatus } from "../types";
 
 interface Props {
   part: Part;
+  updateStatus: (status: PartStatus) => void;
 }
 
-export default function PartDetails({ part }: Props) {
+export default function PartDetails({ part, updateStatus }: Props) {
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4">Part Details</h2>
@@ -21,6 +22,7 @@ export default function PartDetails({ part }: Props) {
         <select
           value={part.status}
           // Notify parent component about status change
+          onChange={(e) => updateStatus(e.target.value as PartStatus)}
           className="mt-1 w-full md:max-w-50 border rounded px-2 py-1"
         >
           <option selected>Draft</option>

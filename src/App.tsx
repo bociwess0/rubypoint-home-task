@@ -3,7 +3,7 @@ import "./App.css";
 import PartDetails from "./components/PartDetails";
 import PartsList from "./components/PartsList";
 import { initialParts } from "./data/parts";
-import type { Part } from "./types";
+import type { Part, PartStatus } from "./types";
 
 function App() {
   /**
@@ -21,7 +21,25 @@ function App() {
     initialParts[0].id
   );
 
+  
+  /**
+   * Currently selected part object.
+   * Computed from parts and selectedId.
+   */
+
   const selectedPart = parts.find((p: Part) => p.id === selectedId);
+
+  /**
+   * Updates the status of the currently selected part.
+   * This ensures that both the list view and detail view stay in sync.
+   */
+  const updateStatus = (status: PartStatus) => {
+    setParts((prev) =>
+      prev.map((p) =>
+        p.id === selectedId ? { ...p, status } : p
+      )
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:pt-10">
@@ -37,7 +55,7 @@ function App() {
         {selectedPart && (
           <div className="md:w-2/3 flex flex-col gap-4">
             <div className="bg-white rounded-lg shadow p-4">
-              <PartDetails part={selectedPart} />
+              <PartDetails part={selectedPart} updateStatus={updateStatus} />
             </div>
           </div>
         )}
