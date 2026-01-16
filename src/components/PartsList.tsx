@@ -2,18 +2,25 @@ import type { Part } from "../types";
 
 interface Props {
   parts: Part[];
+  selectedId: string | null;
+  onSelect: (id: string) => void;
 }
 
-export default function PartsList({ parts }: Props) {
-
-  
-
+export default function PartsList({ parts, selectedId, onSelect }: Props) {
   return (
     <div>
       <h2 className="text-lg font-semibold mb-3">Parts</h2>
       <ul className="space-y-2">
         {parts.map((part: Part) => (
-          <li key={part.id} className="p-2 rounded cursor-pointer border">
+          <li
+            key={part.id}
+            className={`p-2 rounded cursor-pointer border ${
+              part.id === selectedId
+                ? "bg-blue-50 border-blue-400"
+                : "hover:bg-gray-50 border-transparent"
+            }`}
+            onClick={() => onSelect(part.id)}
+          >
             <div className="font-medium">{part.name}</div>
             <div className="text-sm text-gray-600">
               {part.status} · {part.supplier}
