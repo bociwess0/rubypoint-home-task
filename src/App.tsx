@@ -4,6 +4,7 @@ import PartDetails from "./components/PartDetails";
 import PartsList from "./components/PartsList";
 import { initialParts } from "./data/parts";
 import type { Part, PartStatus } from "./types";
+import GeometryDiagram from "./components/GeometryDiagram";
 
 function App() {
   /**
@@ -21,7 +22,6 @@ function App() {
     initialParts[0].id
   );
 
-  
   /**
    * Currently selected part object.
    * Computed from parts and selectedId.
@@ -35,9 +35,7 @@ function App() {
    */
   const updateStatus = (status: PartStatus) => {
     setParts((prev) =>
-      prev.map((p) =>
-        p.id === selectedId ? { ...p, status } : p
-      )
+      prev.map((p) => (p.id === selectedId ? { ...p, status } : p))
     );
   };
 
@@ -55,7 +53,10 @@ function App() {
         {selectedPart && (
           <div className="md:w-2/3 flex flex-col gap-4">
             <div className="bg-white rounded-lg shadow p-4">
-              <PartDetails part={selectedPart} updateStatus={updateStatus} />
+              <GeometryDiagram geometry={selectedPart.geometry} />
+            </div>
+            <div className="bg-white rounded-lg shadow p-4">
+              <PartDetails part={selectedPart} onStatusChange={updateStatus} />
             </div>
           </div>
         )}
