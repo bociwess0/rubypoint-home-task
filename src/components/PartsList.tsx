@@ -1,10 +1,18 @@
 import type { Part } from "../types";
 
 interface Props {
-  parts: Part[];
-  selectedId: string | null;
-  onSelect: (id: string) => void;
+  parts: Part[]; // list of available parts to display
+  selectedId: string | null; // currently selected part id (used for visual highlighting)
+  onSelect: (id: string) => void; // callback fired when a part is selected
 }
+
+/**
+ * PartsList
+ *
+ * Displays a list of parts and allows the user to select one.
+ * This is a presentational component with no internal state.
+ * It delegates selection handling to the parent component.
+ */
 
 export default function PartsList({ parts, selectedId, onSelect }: Props) {
   return (

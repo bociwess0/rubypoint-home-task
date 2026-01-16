@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import PartDetails from "./components/PartDetails";
 import PartsList from "./components/PartsList";
 import { initialParts } from "./data/parts";
@@ -50,6 +49,7 @@ function App() {
             onSelect={setSelectedId}
           />
         </div>
+        {/* Right column: diagram and details */}
         {selectedPart && (
           <div className="md:w-2/3 flex flex-col gap-4">
             <div className="bg-white rounded-lg shadow p-4">

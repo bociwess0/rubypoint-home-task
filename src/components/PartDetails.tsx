@@ -1,16 +1,25 @@
 import type { Part, PartStatus } from "../types";
 
 interface Props {
-  part: Part;
-  onStatusChange: (status: PartStatus) => void;
+  part: Part; // currently selected part whose details are displayed
+  onStatusChange: (status: PartStatus) => void; // callback to notify parent when the part status changes
 }
+
+/**
+ * PartDetails
+ *
+ * Displays detailed information about the selected part.
+ * Includes a controlled Status dropdown that updates application state
+ * via a callback provided by the parent component.
+ *
+ * This component does not manage state itself and relies entirely on props.
+ */
 
 export default function PartDetails({ part, onStatusChange }: Props) {
   return (
     <div>
       <h2 className="text-lg font-semibold mb-4">Part Details</h2>
 
-      {/* Part name */}
       <div className="space-y-2">
         {/* Part name */}
         <div>
@@ -23,8 +32,7 @@ export default function PartDetails({ part, onStatusChange }: Props) {
           <label className="block text-sm font-medium">Status</label>
           <select
             value={part.status}
-            // Notify parent component about status change
-            onChange={(e) => onStatusChange(e.target.value as PartStatus)}
+            onChange={(e) => onStatusChange(e.target.value as PartStatus)} // Notify parent component about status change
             className="mt-1 w-full md:max-w-50 border rounded px-2 py-1"
           >
             <option>Draft</option>
