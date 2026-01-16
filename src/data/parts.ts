@@ -1,4 +1,6 @@
-export const initialParts= [
+import type { Part } from "../types";
+
+export const initialParts: Part[] = [
   {
     id: 'part-001',
     name: 'Mounting Bracket',
