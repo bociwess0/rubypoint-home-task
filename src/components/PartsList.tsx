@@ -5,6 +5,9 @@ interface Props {
 }
 
 export default function PartsList({ parts }: Props) {
+
+  
+
   return (
     <div>
       <h2 className="text-lg font-semibold mb-3">Parts</h2>
