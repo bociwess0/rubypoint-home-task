@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# RubyPoint – Frontend Home Exercise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a small frontend application built as part of the RubyPoint interview process.  
+The goal of the task was to demonstrate frontend structure, state management, and data-driven UI behavior within a limited time scope.
 
-Currently, two official plugins are available:
+### 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow these steps to run the project locally:
 
-## React Compiler
+### 1️⃣ Download and Extract the ZIP
+Extract it to a folder of your choice, for example, Desktop or a working directory.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2️⃣ Open the Project in Terminal
+```
+cd path/to/rubypoint-home-task
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3️⃣ Install Dependencies
 ```
+npm install
+```
+
+### 3️⃣ Run the development server
+```
+npm run dev
+```
+
+The application will start at:
+👉 http://localhost:5173
+
+### 🧪 Running Tests
+
+To execute the unit tests:
+
+```
+npx vitest
+```
+
+The project uses Vitest and React Testing Library for testing utilities and UI behavior.
+<br><br>
+
+### 🎯 What I focused on
+
+Given the time constraint, I focused on:
+
+#### Clear component structure
+* Separating responsibilities between list, detail view, and visualization components.
+
+#### Predictable state management
+* Keeping a single source of truth in the root component and using unidirectional data flow.
+
+#### Data-driven UI
+* Rendering both the detail view and the geometry diagram directly from structured data.
+
+#### Clarity over complexity
+* Avoiding unnecessary abstractions or libraries while keeping the solution easy to reason about.
+
+#### Responsiveness
+* Ensuring the layout remains usable on smaller screens using a simple flex-based layout.
+<br><br>
+
+
+### ⚖️ Tradeoffs & assumptions
+
+#### State management
+* All state is kept in the App component. For this scope, this keeps the data flow simple and explicit.
+
+#### Static data source
+* Parts are loaded from a local data file instead of an API, as backend integration was explicitly out of scope.
+
+#### SVG for visualization
+* SVG was chosen for the geometry diagram to keep the visualization simple, scalable, and data-driven without introducing Canvas or 3D complexity.
+
+#### Styling
+* Tailwind CSS was used to achieve a clean and consistent layout quickly without custom CSS.
+<br><br>
+
+
+### 🔧 What I would improve with more time
+
+* Extract shared state logic into a custom hook or introduce server-state management once data comes from an API
+* Add basic integration tests covering list selection and status updates across components
+* Improve visual hierarchy and spacing for larger datasets
+* Add loading and empty states to better reflect real-world scenarios
+
+<br><br>
+
+
+### 🧪 Tests
+
+* Added a small unit test using Vitest and React Testing Library
+* The test focuses on the most important interaction in the app:
+changing a part’s status and propagating that change via callbacks
+<br><br>
+
+### 👨‍💻 Author
+
+Developed by: Bogdan Djordjevic
+
+GitHub: [bociwess0](https://github.com/bociwess0)
