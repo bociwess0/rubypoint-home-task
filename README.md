@@ -13,7 +13,7 @@ Extract it to a folder of your choice, for example, Desktop or a working directo
 
 ### 2️⃣ Open the Project in Terminal
 ```
-cd path/to/rubypoint-home-task
+cd path/to/rubypoint-home-task-main
 ```
 
 ### 3️⃣ Install Dependencies
